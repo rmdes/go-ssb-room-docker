@@ -14,3 +14,4 @@ Steps:
 
 # cloudron.io
 the Cloudronmanifest file is only used in a docker build/push / cloudron install context. 
+forum link : https://forum.cloudron.io/topic/3944/go-ssb-room-was-secure-scuttlebutt-ssb-pub-off-grid/9?_=1645383048034
