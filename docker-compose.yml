@@ -12,7 +12,7 @@ services:
       -  "3000:3000" # Proxypass this port through NGINX or Apache as your HTTP landing & dashboard page
       - "0.0.0.0:8008:8008" # This is the port SSB clients connect to
     volumes:
-      - ssb-go-room-secrets:/.ssb-go-room-secrets
+      - ssb-go-room-secrets:/app/data/.ssb-go-room-secrets
 
 volumes:
  ssb-go-room-secrets:
