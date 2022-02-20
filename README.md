@@ -1,6 +1,7 @@
 # go-ssb-room-docker : https://github.com/ssb-ngi-pointer/go-ssb-room
 
 Steps: 
+- Edit the .env file to add the domain you will be using !important
 - cloudron install --image buzzworkers/go-ssb-room4:cloudron --no-wait
 - next, identify your container ID (cloudron)
 ![image](https://user-images.githubusercontent.com/12155003/154856823-5625bae9-43c5-42c1-8c37-a329f2ce34f0.png)
