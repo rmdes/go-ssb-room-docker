@@ -1,9 +1,29 @@
 {
-  "version": "0.1.0",
+  "id": "com.ssb.cloudronapp",
+  "title": "SSB Go Room",
+  "author": "rMdes",
+  "tagline": "SSB Go Room",
+  "version": "1.2.0",
   "healthCheckPath": "/",
   "httpPort": 3000,
+  "capabilities": [ "net_admin" ],
+
+  "manifestVersion": 2,
+  "website": "https://github.com/ssb-ngi-pointer/go-ssb-room",
+  "contactEmail": "support@cloudron.io",
+  "tags": [ "ssb-go-room", "scuttlebut", "ssb" ],
   "addons": {
     "localstorage": {}
   },
-  "manifestVersion": 2
+  "tcpPorts": {
+    "API_SERVER_DOMAIN": {
+      "title": "SSB Port",
+      "description": "SSB Port can talk",
+      "defaultValue": 8008,
+      "containerPort": 8008
+    }
+  },
+  "minBoxVersion": "5.3.0",
+  "documentationUrl": "https://docs.cloudron.io/",
+  "forumUrl": "https://forum.cloudron.io/"
 }

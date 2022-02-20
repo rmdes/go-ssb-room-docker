@@ -1,38 +1,35 @@
-k# SPDX-FileCopyrightText: 2021 The NGI Pointer Secure-Scuttlebutt Team of 2020/2021
+# SPDX-FileCopyrightText: 2021 The NGI Pointer Secure-Scuttlebutt Team of 2020/2021
 #
 # SPDX-License-Identifier: Unlicense
 
 FROM golang:1.16-alpine as build
 
+RUN mkdir -p /app/data /app/code /app/data/.ssg-go-room-secrets
+
+WORKDIR /app/code
+
 RUN apk add --no-cache \
       build-base \
       git \
       sqlite \
-      sqlite-dev
+      sqlite-dev \
+      bash
 
-RUN mkdir /app
-WORKDIR /app
-COPY . /app
+COPY . /app/code
 
-
-RUN cd /app/cmd/server && go build && \
-    cd /app/cmd/insert-user && go build
+RUN cd /app/code/cmd/server && go build && \
+    cd /app/code/cmd/insert-user && go build
 
 FROM alpine:3.14
 
-COPY --from=build /app /app
-WORKDIR /app
+COPY --from=build /app/code /app/code
+WORKDIR /app/code
 
 EXPOSE 8008
 EXPOSE 3000
 
-ENV REPO /app/.ssb-go-room-secrets
-RUN mkdir /app/.ssb-go-room-secrets
-RUN adduser -D -h /app ssb && \
-    chown -R ssb:ssb /app && \
-    chmod +x ./start.sh
+ENV REPO /app/data/.ssb-go-room-secrets
 
-USER ssb
+RUN chmod +x /app/code/start.sh
 
-CMD ./start.sh
-
+CMD /app/code/start.sh
