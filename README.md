@@ -2,7 +2,10 @@
 
 Steps: 
 - Edit the .env file to add the domain you will be using !important
-- cloudron install --image buzzworkers/go-ssb-room4:cloudron --no-wait
+- docker login to validate you access to docker hub
+- docker build -t username/go-ssb-room:yourtag --nocache
+- docker push username/go-ssb-room:yourtab
+- cloudron install --image username/go-ssb-room:yourtag --nowait
 - next, identify your container ID (cloudron)
 ![image](https://user-images.githubusercontent.com/12155003/154856823-5625bae9-43c5-42c1-8c37-a329f2ce34f0.png)
 - Exec into your container : sudo docker exec -ti -u 0 2e116baa-6a83-40c1-8ccb-3097aaa4b741 /bin/sh 
